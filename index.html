@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Código Money - Transform Your Financial Future</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root {
+--primary-gold: #FFD700;
+--secondary-gold: #FFA500;
+--dark-bg: #0a0a0a;
+--darker-bg: #050505;
+--card-bg: rgba(255, 215, 0, 0.08);
+--text-light: #e8e8e8;
+--text-muted: #b8b8b8;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: radial-gradient(ellipse at top, #1a1a1a 0%, var(--dark-bg) 50%, var(--darker-bg) 100%);
+color: var(--text-light);
+overflow-x: hidden;
+line-height: 1.6;
+}
+
+.container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+/* Enhanced Header */
+header {
+padding:  0;
+position: fixed;
+top: 0;
+width: 100%;
+background: rgba(10, 10, 10, 0.95);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+z-index: 10000;
+transition: all 0.3s ease;
+}
+
+header.scrolled {
+padding: 10px 0;
+background: rgba(0, 0, 0, 0.98);
+box-shadow: 0 5px 30px rgba(255, 215, 0, 0.1);
+}
+
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo {
+font-size: 2rem;
+font-weight: 900;
+background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+letter-spacing: -1px;
+}
+
+.nav-links {
+display: flex;
+gap: 40px;
+list-style: none;
+}
+
+.nav-links a {
+color: var(--text-light);
+text-decoration: none;
+font-weight: 500;
+position: relative;
+transition: all 0.3s ease;
+}
+
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+width: 100%;
+}
+
+.nav-links a:hover {
+color: var(--primary-gold);
+transform: translateY(-2px);
+}
+
+.mobile-menu {
+display: none;
+flex-direction: column;
+cursor: pointer;
+}
+
+.mobile-menu span {
+width: 25px;
+height: 3px;
+background: var(--primary-gold);
+margin: 3px 0;
+transition: 0.3s;
+border-radius: 2px;
+}
+
+/* Enhanced Hero Section */
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+position: relative;
+padding-top: 80px;
+background:
+radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.1) 0%, transparent 50%);
+}
+
+.hero-content {
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+gap: 80px;
+align-items: center;
+}
+
+.hero-text h1 {
+font-size: clamp(2.5rem, 5vw, 4.5rem);
+margin-bottom: 25px;
+background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 50%, #fff 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+font-weight: 900;
+line-height: 1.1;
+text-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+animation: heroGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+from {
+filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+transform: scale(1);
+}
+to {
+filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.5));
+transform: scale(1.02);
+}
+}
+
+.hero-subtitle {
+font-size: clamp(1.1rem, 2vw, 1.4rem);
+margin-bottom: 35px;
+color: var(--text-muted);
+font-weight: 300;
+max-width: 600px;
+}
+
+.hero-features {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+margin-bottom: 40px;
+}
+
+.hero-feature {
+display: flex;
+align-items: center;
+gap: 10px;
+background: var(--card-bg);
+padding: 10px 20px;
+border-radius: 25px;
+border: 1px solid rgba(255, 215, 0, 0.2);
+backdrop-filter: blur(10px);
+}
+
+.hero-feature::before {
+content: '✓';
+color: var(--primary-gold);
+font-weight: bold;
+}
+
+.cta-group {
+display: flex;
+gap: 20px;
+align-items: center;
+flex-wrap: wrap;
+}
+
+.cta-button {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+padding: 20px 45px;
+background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+color: #000;
+text-decoration: none;
+border-radius: 50px;
+font-weight: 700;
+font-size: 1.1rem;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow:
+0 15px 35px rgba(255, 215, 0, 0.3),
+0 5px 15px rgba(0, 0, 0, 0.3);
+position: relative;
+overflow: hidden;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+
+.cta-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+transition: left 0.6s;
+}
+
+.cta-button:hover {
+transform: translateY(-8px) scale(1.05);
+box-shadow:
+0 25px 50px rgba(255, 215, 0, 0.4),
+0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover::before {
+left: 100%;
+}
+
+.secondary-cta {
+color: var(--primary-gold);
+text-decoration: none;
+font-weight: 600;
+display: flex;
+align-items: center;
+gap: 8px;
+transition: all 0.3s ease;
+}
+
+.secondary-cta:hover {
+color: #fff;
+transform: translateX(5px);
+}
+
+.hero-image {
+position: relative;
+text-align: center;
+}
+
+.ebook-showcase {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.ebook-mockup {
+width: 100%;
+max-width: 420px;
+height: 550px;
+background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+border-radius: 25px;
+box-shadow:
+0 40px 80px rgba(0, 0, 0, 0.6),
+0 20px 40px rgba(255, 215, 0, 0.2);
+transform: perspective(1000px) rotateY(-12deg) rotateX(8deg);
+transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+animation: ebookFloat 8s ease-in-out infinite;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: #000;
+font-weight: 900;
+position: relative;
+overflow: hidden;
+}
+
+.ebook-mockup::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+animation: shimmer 4s infinite;
+}
+
+.ebook-mockup:hover {
+transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) scale(1.08);
+box-shadow:
+0 60px 120px rgba(0, 0, 0, 0.8),
+0 30px 60px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes ebookFloat {
+0%, 100% {
+transform: perspective(1000px) rotateY(-12deg) rotateX(8deg) translateY(0px);
+}
+25% {
+transform: perspective(1000px) rotateY(-10deg) rotateX(6deg) translateY(-15px);
+}
+50% {
+transform: perspective(1000px) rotateY(-14deg) rotateX(10deg) translateY(-25px);
+}
+75% {
+transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-10px);
+}
+}
+
+@keyframes shimmer {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+.ebook-content {
+position: relative;
+z-index: 2;
+}
+
+.ebook-title {
+font-size: clamp(1.8rem, 3vw, 2.5rem);
+margin-bottom: 15px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ebook-subtitle {
+font-size: clamp(1rem, 1.5vw, 1.2rem);
+opacity: 0.8;
+font-weight: 600;
+}
+
+/* Enhanced Features Section */
+.features {
+padding: 120px 0;
+background: linear-gradient(180deg, transparent 0%, rgba(255, 215, 0, 0.03) 50%, transparent 100%);
+position: relative;
+}
+
+.section-title {
+text-align: center;
+font-size: clamp(2rem, 4vw, 3rem);
+margin-bottom: 20px;
+background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+font-weight: 800;
+}
+
+.section-subtitle {
+text-align: center;
+font-size: 1.2rem;
+color: var(--text-muted);
+margin-bottom: 80px;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.features-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 40px;
+}
+
+.feature-card {
+background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 215, 0, 0.05) 100%);
+border: 1px solid rgba(255, 215, 0, 0.15);
+border-radius: 25px;
+padding: 45px 35px;
+text-align: center;
+transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+backdrop-filter: blur(20px);
+position: relative;
+overflow: hidden;
+}
+
+.feature-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+transition: left 0.8s;
+}
+
+.feature-card:hover::before {
+left: 100%;
+}
+
+.feature-card:hover {
+transform: translateY(-15px) scale(1.02);
+box-shadow:
+0 30px 60px rgba(255, 215, 0, 0.15),
+0 15px 30px rgba(0, 0, 0, 0.3);
+border-color: rgba(255, 215, 0, 0.3);
+}
+
+.feature-icon {
+font-size: 4rem;
+margin-bottom: 25px;
+display: block;
+animation: iconBounce 2s infinite;
+}
+
+@keyframes iconBounce {
+0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+40% { transform: translateY(-10px); }
+60% { transform: translateY(-5px); }
+}
+
+.feature-card h3 {
+font-size: 1.8rem;
+margin-bottom: 20px;
+color: var(--primary-gold);
+font-weight: 700;
+}
+
+.feature-card p {
+color: var(--text-muted);
+font-size: 1.1rem;
+line-height: 1.7;
+}
+
+/* Enhanced Testimonials */
+.testimonials {
+padding: 120px 0;
+background:
+linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 215, 0, 0.05) 100%),
+radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+}
+
+.testimonial-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+gap: 40px;
+}
+
+.testimonial {
+background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 215, 0, 0.03) 100%);
+border-radius: 25px;
+padding: 40px 35px;
+border-left: 5px solid var(--primary-gold);
+backdrop-filter: blur(20px);
+transition: all 0.4s ease;
+position: relative;
+}
+
+.testimonial:hover {
+transform: translateY(-10px);
+box-shadow: 0 25px 50px rgba(255, 215, 0, 0.1);
+}
+
+.testimonial-stars {
+color: var(--primary-gold);
+font-size: 1.5rem;
+margin-bottom: 20px;
+}
+
+.testimonial-text {
+font-style: italic;
+margin-bottom: 25px;
+color: var(--text-light);
+font-size: 1.15rem;
+line-height: 1.7;
+}
+
+.testimonial-author {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.author-avatar {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+color: #000;
+}
+
+.author-info h4 {
+color: var(--primary-gold);
+font-weight: 600;
+margin-bottom: 2px;
+}
+
+.author-info p {
+color: var(--text-muted);
+font-size: 0.9rem;
+}
+
+/* Enhanced Pricing */
+.pricing {
+padding: 120px 0;
+position: relative;
+}
+
+.pricing-container {
+max-width: 600px;
+margin: 0 auto;
+}
+
+.pricing-card {
+background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 215, 0, 0.1) 100%);
+border: 3px solid var(--primary-gold);
+border-radius: 35px;
+padding: 60px 50px;
+text-align: center;
+position: relative;
+overflow: hidden;
+backdrop-filter: blur(20px);
+}
+
+.pricing-card::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: conic-gradient(transparent, rgba(255, 215, 0, 0.1), transparent);
+animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+100% { transform: rotate(360deg); }
+}
+
+.pricing-badge {
+position: absolute;
+top: -15px;
+left: 50%;
+transform: translateX(-50%);
+background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+color: #000;
+padding: 10px 30px;
+border-radius: 25px;
+font-weight: 700;
+font-size: 0.9rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.price-container {
+position: relative;
+z-index: 1;
+margin-bottom: 30px;
+}
+
+.price {
+font-size: clamp(3rem, 6vw, 5rem);
+color: var(--primary-gold);
+font-weight: 900;
+margin-bottom: 10px;
+text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.price-original {
+text-decoration: line-through;
+color: var(--text-muted);
+font-size: 1.5rem;
+margin-right: 15px;
+}
+
+.price-description {
+font-size: 1.3rem;
+margin-bottom: 40px;
+color: var(--text-light);
+position: relative;
+z-index: 1;
+}
+
+.price-features {
+text-align: left;
+margin-bottom: 40px;
+position: relative;
+z-index: 1;
+}
+
+.price-feature {
+display: flex;
+align-items: center;
+gap: 15px;
+margin-bottom: 15px;
+color: var(--text-light);
+}
+
+.price-feature::before {
+content: '✓';
+color: var(--primary-gold);
+font-weight: bold;
+font-size: 1.2rem;
+}
+
+.guarantee {
+margin-top: 30px;
+padding: 20px;
+background: rgba(255, 215, 0, 0.1);
+border-radius: 15px;
+border: 1px solid rgba(255, 215, 0, 0.2);
+position: relative;
+z-index: 1;
+}
+
+/* Enhanced Footer */
+footer {
+padding: 80px 0 40px;
+background: linear-gradient(135deg, var(--darker-bg) 0%, #000 100%);
+border-top: 1px solid rgba(255, 215, 0, 0.1);
+position: relative;
+}
+
+.footer-content {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+margin-bottom: 40px;
+}
+
+.footer-section h3 {
+color: var(--primary-gold);
+margin-bottom: 20px;
+font-size: 1.3rem;
+}
+
+.footer-section p, .footer-section a {
+color: var(--text-muted);
+text-decoration: none;
+line-height: 1.8;
+transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+color: var(--primary-gold);
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 40px;
+border-top: 1px solid rgba(255, 215, 0, 0.1);
+color: var(--text-muted);
+}
+
+/* Enhanced Particles */
+.particles {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 1;
+}
+
+.particle {
+position: absolute;
+border-radius: 50%;
+background: var(--primary-gold);
+animation: particleFloat 15s infinite linear;
+}
+
+@keyframes particleFloat {
+0% {
+transform: translateY(100vh) rotate(0deg);
+opacity: 0;
+scale: 0;
+}
+10% {
+opacity: 1;
+scale: 1;
+}
+90% {
+opacity: 1;
+scale: 1;
+}
+100% {
+transform: translateY(-10vh) rotate(360deg);
+opacity: 0;
+scale: 0;
+}
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+.hero-content {
+grid-template-columns: 1fr;
+gap: 60px;
+text-align: center;
+}
+
+.features-grid {
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+}
+}
+
+@media (max-width: 768px) {
+.container {
+padding: 0 15px;
+}
+
+.nav-links {
+display: none;
+}
+
+.mobile-menu {
+display: flex;
+}
+
+.hero {
+padding-top: 100px;
+min-height: auto;
+padding-bottom: 60px;
+}
+
+.hero-features {
+justify-content: center;
+}
+
+.cta-group {
+flex-direction: column;
+align-items: center;
+}
+
+.cta-button {
+width: 100%;
+max-width: 300px;
+justify-content: center;
+}
+
+.features-grid {
+grid-template-columns: 1fr;
+gap: 25px;
+}
+
+.feature-card {
+padding: 35px 25px;
+}
+
+.testimonial-grid {
+grid-template-columns: 1fr;
+gap: 25px;
+}
+
+.testimonial {
+padding: 30px 25px;
+}
+
+.pricing-card {
+padding: 40px 30px;
+margin: 0 10px;
+}
+
+.ebook-mockup {
+max-width: 300px;
+height: 400px;
+}
+
+.footer-content {
+grid-template-columns: 1fr;
+gap: 30px;
+text-align: center;
+}
+}
+
+@media (max-width: 480px) {
+.hero-feature {
+font-size: 0.9rem;
+padding: 8px 15px;
+}
+
+.feature-icon {
+font-size: 3rem;
+}
+
+.pricing-card {
+padding: 30px 20px;
+}
+
+.price {
+font-size: 3rem;
+}
+}
+
+/* Smooth scroll behavior */
+html {
+scroll-behavior: smooth;
+}
+
+/* Loading animation */
+.loading-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: var(--dark-bg);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 99999;
+transition: opacity 0.5s ease;
+}
+
+.loading-spinner {
+width: 50px;
+height: 50px;
+border: 3px solid rgba(255, 215, 0, 0.3);
+border-radius: 50%;
+border-top-color: var(--primary-gold);
+animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+to { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+<div class="loading-spinner"></div>
+</div>
+
+<!-- Particles Background -->
+<div class="particles" id="particles"></div>
+
+<!-- Enhanced Header -->
+<header id="header">
+<nav class="container">
+
+<div class="logo">
+  <img src="/2d1d9eee-a24e-42b0-9e1b-25ff83df4269.jpeg" alt="Código Money Logo" style="height: 75px;">
+</div>
+
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#testimonials">Reviews</a></li>
+<li><a href="#pricing">Pricing</a></li>
+</ul>
+<div class="mobile-menu">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</nav>
+</header>
+
+<!-- Enhanced Hero Section -->
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-content">
+<div class="hero-text">
+<h1>Rise Like a Phoenix From Financial Struggle</h1>
+<p class="hero-subtitle">Transform your financial destiny with the exact blueprint that helped thousands escape the 9-to-5 trap and build generational wealth. Your golden opportunity starts now.</p>
+
+<div class="hero-features">
+<div class="hero-feature">5 Premium Ebooks</div>
+<div class="hero-feature">Bonus Resources</div>
+<div class="hero-feature">Lifetime Access</div>
+<div class="hero-feature">Community Support</div>
+</div>
+
+<div class="cta-group">
+<a href="#pricing" class="cta-button">
+🚀 Transform My Life - $47
+</a>
+<a href="#features" class="secondary-cta">
+Learn More →
+</a>
+</div>
+</div>
+<div class="hero-image">
+<div class="ebook-showcase">
+<div class="ebook-mockup">
+<div class="ebook-content">
+<div class="ebook-title">CÓDIGO MONEY</div>
+<div class="ebook-subtitle">The Complete Financial Freedom Collection</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Enhanced Features Section -->
+<section class="features" id="features">
+<div class="container">
+<h2 class="section-title">Your Path to Financial Phoenix</h2>
+<p class="section-subtitle">Discover the proven strategies that separate the wealthy from the struggling masses</p>
+<div class="features-grid">
+<div class="feature-card">
+<span class="feature-icon">💰</span>
+<h3>Wealth Multiplication Systems</h3>
+<p>Learn the compound wealth-building strategies used by millionaires to turn $1,000 into $100,000+ through smart money management and strategic investments.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">📈</span>
+<h3>Investment Mastery Blueprint</h3>
+<p>Master risk-adjusted investing with our proven portfolio strategies that consistently outperform the market while protecting your capital.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🧠</span>
+<h3>Millionaire Mindset Rewiring</h3>
+<p>Eliminate the limiting beliefs keeping you broke and install the exact thought patterns that attract wealth and abundance into your life.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🚀</span>
+<h3>Passive Income Acceleration</h3>
+<p>Build multiple streams of passive income that work 24/7 to generate wealth while you sleep, travel, or spend time with family.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">💎</span>
+<h3>Elite Network Access</h3>
+<p>Join our exclusive community of high-achievers and get direct access to mentors, deals, and opportunities unavailable to the general public.</p>
+</div>
+<div class="feature-card">
+<span class="feature-icon">🎯</span>
+<h3>Personalized Action Plans</h3>
+<p>Get customized roadmaps based on your current situation, goals, and timeline to ensure maximum results in minimum time.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Enhanced Testimonials -->
+<section class="testimonials" id="testimonials">
+<div class="container">
+<h2 class="section-title">Success Stories</h2>
+<p class="section-subtitle">Real people, real results, real transformation</p>
+<div class="testimonial-grid">
+<div class="testimonial">
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text">"From $50k in debt to $200k net worth in 18 months. The strategies in Código Money completely transformed my financial reality. I finally understand how money really works!"</p>
+<div class="testimonial-author">
+<div class="author-avatar">M</div>
+<div class="author-info">
+<h4>Marcus Thompson</h4>
+<p>Small Business Owner</p>
+</div>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text">"I was skeptical at first, but these aren't get-rich-quick schemes - they're legitimate wealth-building principles. My passive income now covers all my expenses!"</p>
+<div class="testimonial-author">
+<div class="author-avatar">S</div>
+<div class="author-info">
+<h4>Sarah Chen</h4>
+<p>Marketing Director</p>
+</div>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text">"The mindset shift alone was worth 10x the price. I now see opportunities everywhere and have the confidence to pursue them. Already made my first $10k month!"</p>
+<div class="testimonial-author">
+<div class="author-avatar">R</div>
+<div class="author-info">
+<h4>Robert Martinez</h4>
+<p>Entrepreneur</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Enhanced Pricing -->
+<section class="pricing" id="pricing">
+<div class="container">
+<h2 class="section-title">Transform Your Life Today</h2>
+<p class="section-subtitle">Limited time offer - Your complete financial freedom package</p>
+<div class="pricing-container">
+<div class="pricing-card">
+<div class="pricing-badge">🔥 95% OFF - LIMITED TIME</div>
+<div class="price-container">
+<div class="price">
+<span class="price-original">$997</span>
+$47
+</div>
+<p class="price-description">Complete Financial Freedom Collection</p>
+</div>
+<div class="price-features">
+<div class="price-feature">5 Premium Ebooks (500+ pages of content)</div>
+<div class="price-feature">Bonus: Personal Finance Tracker</div>
+<div class="price-feature">Bonus: Investment Calculator Tools</div>
+<div class="price-feature">Bonus: Exclusive Video Masterclass</div>
+<div class="price-feature">Private Community Access</div>
+<div class="price-feature">Lifetime Updates & Support</div>
+<div class="price-feature">Email Support & Guidance</div>
+</div>
+<a href="#" class="cta-button">
+🚀 Start My Transformation - $47
+</a>
+<div class="guarantee">
+<strong>💯 60-Day Money-Back Guarantee</strong><br>
+If you don't see results in 60 days, get a full refund. No questions asked.
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Enhanced Footer -->
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>Código Money</h3>
+<p>Empowering individuals to break free from financial limitations and build generational wealth through proven strategies and mindset transformation.</p>
+</div>
+<div class="footer-section">
+<h3>Quick Links</h3>
+<p><a href="#home">Home</a></p>
+<p><a href="#features">Features</a></p>
+<p><a href="#testimonials">Testimonials</a></p>
+<p><a href="#pricing">Pricing</a></p>
+</div>
+<div class="footer-section">
+<h3>Support</h3>
+<p><a href="#">Contact Us</a></p>
+<p><a href="#">FAQ</a></p>
+<p><a href="#">Privacy Policy</a></p>
+<p><a href="#">Terms of Service</a></p>
+</div>
+<div class="footer-section">
+<h3>Connect</h3>
+<p><a href="#">Email: support@codigomoney.com</a></p>
+<p><a href="#">Follow us on social media</a></p>
+<p><a href="#">Join our community</a></p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2024 Código Money. All rights reserved. Transform your financial future today.</p>
+</div>
+</div>
+</footer>
+
+<script>
+// Enhanced JavaScript functionality
+document.addEventListener('DOMContentLoaded', function() {
+// Remove loading overlay
+const loadingOverlay = document.getElementById('loadingOverlay');
+setTimeout(() => {
+loadingOverlay.style.opacity = '0';
+setTimeout(() => {
+loadingOverlay.style.display = 'none';
+}, 500);
+}, 1000);
+
+// Enhanced header scroll effect
+const header = document.getElementById('header');
+let lastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+if (window.scrollY > 100) {
+header.classList.add('scrolled');
+} else {
+header.classList.remove('scrolled');
+}
+
+// Hide/show header on scroll
+if (window.scrollY > lastScrollY && window.scrollY > 500) {
+header.style.transform = 'translateY(-100%)';
+} else {
+header.style.transform = 'translateY(0)';
+}
+lastScrollY = window.scrollY;
+});
+
+// Enhanced smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+const headerHeight = header.offsetHeight;
+const targetPosition = target.offsetTop - headerHeight;
+
+window.scrollTo({
+top: targetPosition,
+behavior: 'smooth'
+});
+}
+});
+});
+
+// Enhanced particles system
+function createParticles() {
+const particlesContainer = document.getElementById('particles');
+const particleCount = window.innerWidth > 768 ? 15 : 8;
+
+for (let i = 0; i < particleCount; i++) {
+const particle = document.createElement('div');
+particle.className = 'particle';
+
+// Random size and position
+const size = Math.random() * 4 + 1;
+particle.style.width = size + 'px';
+particle.style.height = size + 'px';
+particle.style.left = Math.random() * 100 + '%';
+particle.style.opacity = Math.random() * 0.5 + 0.2;
+
+// Random animation delay and duration
+particle.style.animationDelay = Math.random() * 15 + 's';
+particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+
+particlesContainer.appendChild(particle);
+}
+}
+
+createParticles();
+
+// Enhanced intersection observer for animations
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0)';
+}
+});
+}, observerOptions);
+
+// Observe all feature cards and testimonials
+document.querySelectorAll('.feature-card, .testimonial').forEach(el => {
+el.style.opacity = '0';
+el.style.transform = 'translateY(50px)';
+el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+observer.observe(el);
+});
+
+// Enhanced CTA button interactions
+document.querySelectorAll('.cta-button').forEach(button => {
+button.addEventListener('mouseenter', () => {
+button.style.transform = 'translateY(-8px) scale(1.05)';
+});
+
+button.addEventListener('mouseleave', () => {
+button.style.transform = 'translateY(0) scale(1)';
+});
+
+button.addEventListener('click', (e) => {
+// Add ripple effect
+const ripple = document.createElement('span');
+const rect = button.getBoundingClientRect();
+const size = Math.max(rect.width, rect.height);
+const x = e.clientX - rect.left - size / 2;
+const y = e.clientY - rect.top - size / 2;
+
+ripple.style.cssText = `
+position: absolute;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.6);
+transform: scale(0);
+animation: ripple 0.6s linear;
+left: ${x}px;
+top: ${y}px;
+width: ${size}px;
+height: ${size}px;
+`;
+
+button.appendChild(ripple);
+setTimeout(() => ripple.remove(), 600);
+});
+});
+
+// Enhanced ebook mockup interactions
+const ebookMockup = document.querySelector('.ebook-mockup');
+if (ebookMockup) {
+ebookMockup.addEventListener('mouseenter', () => {
+ebookMockup.style.transform = 'perspective(1000px) rotateY(-8deg) rotateX(4deg) scale(1.08)';
+});
+
+ebookMockup.addEventListener('mouseleave', () => {
+ebookMockup.style.transform = 'perspective(1000px) rotateY(-12deg) rotateX(8deg) scale(1)';
+});
+}
+
+// Mobile menu functionality
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenu) {
+mobileMenu.addEventListener('click', () => {
+mobileMenu.classList.toggle('active');
+navLinks.classList.toggle('active');
+});
+}
+
+// Enhanced typing effect for hero title
+const heroTitle = document.querySelector('.hero-text h1');
+if (heroTitle) {
+const text = heroTitle.textContent;
+heroTitle.textContent = '';
+let i = 0;
+
+function typeWriter() {
+if (i < text.length) {
+heroTitle.textContent += text.charAt(i);
+i++;
+setTimeout(typeWriter, 50);
+}
+}
+
+setTimeout(typeWriter, 1500);
+}
+
+// Add CSS for ripple animation
+const style = document.createElement('style');
+style.textContent = `
+@keyframes ripple {
+to {
+transform: scale(4);
+opacity: 0;
+}
+}
+
+.nav-links.active {
+display: flex;
+flex-direction: column;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: rgba(0, 0, 0, 0.95);
+backdrop-filter: blur(20px);
+border-top: 1px solid rgba(255, 215, 0, 0.2);
+padding: 20px;
+gap: 20px;
+}
+
+.mobile-menu.active span:nth-child(1) {
+transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu.active span:nth-child(2) {
+opacity: 0;
+}
+
+.mobile-menu.active span:nth-child(3) {
+transform: rotate(45deg) translate(-5px, -6px);
+}
+`;
+document.head.appendChild(style);
+
+// Enhanced scroll-triggered animations
+window.addEventListener('scroll', () => {
+const scrolled = window.pageYOffset;
+const parallax = document.querySelectorAll('.hero-image');
+
+parallax.forEach(element => {
+const speed = 0.5;
+const yPos = -(scrolled * speed);
+element.style.transform = `translateY(${yPos}px)`;
+});
+});
+
+// Add countdown timer for limited offer
+function startCountdown() {
+const countdownElement = document.querySelector('.pricing-badge');
+if (!countdownElement) return;
+
+const endTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 hours from now
+
+function updateCountdown() {
+const now = new Date().getTime();
+const timeLeft = endTime - now;
+
+if (timeLeft > 0) {
+const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+countdownElement.innerHTML = `🔥 ENDS IN ${hours}h ${minutes}m ${seconds}s`;
+} else {
+countdownElement.innerHTML = '🔥 OFFER EXPIRED';
+}
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+}
+
+startCountdown();
+});
+</script>
+</body>
+</html>
